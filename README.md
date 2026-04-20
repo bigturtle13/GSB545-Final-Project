@@ -120,34 +120,7 @@ Selection criterion used: `usd_mae`.
 | SmallForwardModelV1 | Blend | 2,763,402 | 5,098,684 | 0.78764 | core_v1 |
 | CenterModelV1 | LightGBM | 3,138,772 | 5,411,882 | 0.75661 | frontcourt_plus_v1 |
 
-## 6. Do These Align With the “Best Models So Far” Goal?
-
-Comparison against latest heavy `PositionModelsV1` JSON outputs:
-
-| Script | Stable MAE (USD) | Prior V1 MAE (USD) | Delta (Stable - V1) |
-|---|---:|---:|---:|
-| RefinedFeaturesV1 | 2,797,707 | 2,772,176 | +25,531 |
-| PointGuardModelV1 | 4,097,235 | 4,242,398 | -145,163 |
-| ShootingGuardModelV1 | 2,733,830 | 2,739,200 | -5,370 |
-| PowerForwardModelV1 | 2,958,632 | 3,021,889 | -63,256 |
-| SmallForwardModelV1 | 2,763,402 | 2,750,718 | +12,684 |
-| CenterModelV1 | 3,138,772 | 3,266,729 | -127,957 |
-
-Summary:
-
-- Better in 4 of 6 model scripts
-- Slightly worse in 2 of 6 scripts (Refined and SF, both by < 1%)
-- Average MAE improvement across all six: about **50,589 USD** (about **1.62% better**)
-
-Runtime comparison:
-
-- Stable total runtime (all 6): about **118.65s**
-- Prior V1 total runtime (all 6): about **1596.56s**
-- Speedup: about **13.46x faster**
-
-Conclusion: this stable package meets the stated goal of using the stronger practical setup (accuracy-speed-reproducibility balance) for team deployment.
-
-## 7. Interpreting the Learned Salary Signal
+## 6. Interpreting the Learned Salary Signal
 
 Across position runs, consistently strong drivers include:
 

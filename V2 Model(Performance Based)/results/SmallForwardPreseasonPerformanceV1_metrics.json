@@ -1,0 +1,251 @@
+{
+  "timestamp_utc": "2026-04-20T09:35:51Z",
+  "cache_signature": {
+    "version_tag": "preseason_performance_v1.0.0",
+    "model_name": "SmallForwardPreseasonPerformanceV1",
+    "position_code": "SF",
+    "dataset_path": "/Users/amritdhillon/Desktop/Advanced ML/Final Project/NBA Data/NBADataCleanV4.csv",
+    "dataset_size": 9836123,
+    "dataset_mtime": 1776676266,
+    "selection_metric": "usd_mae",
+    "train_games_threshold": 15,
+    "n_iter_single": 2,
+    "cv_splits": 2,
+    "blend_weight_step": 0.2,
+    "include_no_salary_pack": false,
+    "xgb_enabled": true,
+    "catboost_enabled": true,
+    "lightgbm_enabled": true
+  },
+  "model_name": "SmallForwardPreseasonPerformanceV1",
+  "position_code": "SF",
+  "dataset": "/Users/amritdhillon/Desktop/Advanced ML/Final Project/NBA Data/NBADataCleanV4.csv",
+  "prediction_target": "next_season_salary",
+  "target_column": "next_log_salary",
+  "selection_metric": "usd_mae",
+  "train_games_threshold": 15,
+  "rows": {
+    "total": 1581,
+    "train": 1232,
+    "blend_val": 135,
+    "tune": 1367,
+    "holdout": 152
+  },
+  "feature_pack_selected": "prior_perf_core_v1",
+  "feature_count": 45,
+  "feature_names": [
+    "season",
+    "target_season",
+    "age",
+    "experience",
+    "years_of_service",
+    "cba_bucket_is_0_2",
+    "cba_bucket_is_3_6",
+    "cba_bucket_is_7_9",
+    "cba_bucket_is_10_plus",
+    "height_inches",
+    "weight_lbs",
+    "draft_round_clean",
+    "draft_number_clean",
+    "is_undrafted",
+    "is_guard",
+    "is_wing",
+    "is_big",
+    "position_is_combo",
+    "team_region_east",
+    "team_region_west",
+    "team_region_central",
+    "games",
+    "games_missed",
+    "games_missed_rate",
+    "minutes_per_game",
+    "starter_share",
+    "availability_rate",
+    "points_pg",
+    "assists_pg",
+    "rebounds_pg",
+    "turnovers_pg",
+    "three_pt_pct",
+    "ft_pct",
+    "effective_fg_pct",
+    "adv_usage_pct",
+    "adv_true_shooting_pct",
+    "adv_net_rating",
+    "adv_def_rating",
+    "reg_plus_minus_pg",
+    "bbr_per",
+    "bbr_ws_per_48",
+    "bbr_bpm",
+    "bbr_vorp",
+    "team_win_pct_regular",
+    "team_net_points_pg"
+  ],
+  "runtime_seconds": {
+    "tuning": 50.97922611236572,
+    "total": 58.97225093841553
+  },
+  "tuning_config": {
+    "randomized_search_n_iter": 2,
+    "cv_splits": 2,
+    "blend_weight_step": 0.2,
+    "include_no_salary_pack": false,
+    "cv_method": "StratifiedKFold on binned target (fallback: KFold)"
+  },
+  "library_availability": {
+    "xgboost": true,
+    "catboost": true,
+    "lightgbm": true
+  },
+  "validation_candidates": [
+    {
+      "pack": "prior_perf_core_v1",
+      "model": "blend",
+      "score": 3178101.790106655,
+      "best_cv_score": null,
+      "blend_weight": 0.4
+    },
+    {
+      "pack": "prior_perf_core_v1",
+      "model": "catboost",
+      "score": 3194475.6781998333,
+      "best_cv_score": 2425078.5876406096,
+      "blend_weight": null
+    },
+    {
+      "pack": "prior_perf_rolling_v1",
+      "model": "lightgbm",
+      "score": 3215881.0739472248,
+      "best_cv_score": 2476164.4271405265,
+      "blend_weight": null
+    },
+    {
+      "pack": "prior_perf_core_v1",
+      "model": "xgb",
+      "score": 3267626.721759258,
+      "best_cv_score": 2368285.790868245,
+      "blend_weight": null
+    },
+    {
+      "pack": "prior_perf_core_v1",
+      "model": "lightgbm",
+      "score": 3327550.4841712844,
+      "best_cv_score": 2485088.5688398564,
+      "blend_weight": null
+    },
+    {
+      "pack": "prior_perf_rolling_v1",
+      "model": "blend",
+      "score": 3446293.1664143917,
+      "best_cv_score": null,
+      "blend_weight": 0.8
+    },
+    {
+      "pack": "prior_perf_rolling_v1",
+      "model": "xgb",
+      "score": 3468868.4578703693,
+      "best_cv_score": 2372655.7134006163,
+      "blend_weight": null
+    },
+    {
+      "pack": "prior_perf_rolling_v1",
+      "model": "catboost",
+      "score": 3534699.3383784276,
+      "best_cv_score": 2389868.3975806357,
+      "blend_weight": null
+    }
+  ],
+  "selected_model": "blend",
+  "selected_model_best_params": {
+    "xgb": {
+      "model__subsample": 0.8,
+      "model__reg_lambda": 1.0,
+      "model__reg_alpha": 0.1,
+      "model__n_estimators": 1300,
+      "model__min_child_weight": 5,
+      "model__max_depth": 6,
+      "model__learning_rate": 0.05,
+      "model__gamma": 0.0,
+      "model__colsample_bytree": 0.8
+    },
+    "catboost": {
+      "n_estimators": 1500,
+      "learning_rate": 0.03,
+      "l2_leaf_reg": 6.0,
+      "depth": 4
+    }
+  },
+  "final_blend_weight": 0.4,
+  "final_metrics": {
+    "xgb": {
+      "r2_log": 0.6410890402432785,
+      "rmse_log": 0.812704494988578,
+      "mae_log": 0.5583790516327468,
+      "r2_usd": 0.7942095155952726,
+      "rmse_usd": 5131635.560772408,
+      "mae_usd": 3374139.076274673
+    },
+    "catboost": {
+      "r2_log": 0.6281042214069732,
+      "rmse_log": 0.8272750490674768,
+      "mae_log": 0.5651529199879248,
+      "r2_usd": 0.7734118618326387,
+      "rmse_usd": 5384702.907056626,
+      "mae_usd": 3450457.792597279
+    },
+    "lightgbm": {
+      "r2_log": 0.6246919643628387,
+      "rmse_log": 0.8310616334112929,
+      "mae_log": 0.5591964019697521,
+      "r2_usd": 0.782699376407204,
+      "rmse_usd": 5273192.765756818,
+      "mae_usd": 3356177.487966498
+    },
+    "blend": {
+      "r2_log": 0.6439996331723075,
+      "rmse_log": 0.8094024682574051,
+      "mae_log": 0.5522047450368013,
+      "r2_usd": 0.7845782840838076,
+      "rmse_usd": 5250345.724310089,
+      "mae_usd": 3361508.613885883
+    }
+  },
+  "auto_selected_model": "blend",
+  "auto_selected_metrics": {
+    "r2_log": 0.6439996331723075,
+    "rmse_log": 0.8094024682574051,
+    "mae_log": 0.5522047450368013,
+    "r2_usd": 0.7845782840838076,
+    "rmse_usd": 5250345.724310089,
+    "mae_usd": 3361508.613885883
+  },
+  "naive_baseline_prior_salary_metrics": {
+    "r2_log": 0.6213402609565846,
+    "rmse_log": 0.8347642996432211,
+    "mae_log": 0.46886518874749666,
+    "r2_usd": 0.7954080666144943,
+    "rmse_usd": 5116670.076351977,
+    "mae_usd": 2502354.5657894746
+  },
+  "xgb_top20_importance": {
+    "cba_bucket_is_0_2": 0.22980272769927979,
+    "minutes_per_game": 0.15052999556064606,
+    "points_pg": 0.062301792204380035,
+    "years_of_service": 0.043545935302972794,
+    "draft_round_clean": 0.04336324334144592,
+    "is_guard": 0.038707707077264786,
+    "experience": 0.03494878485798836,
+    "target_season": 0.03159750625491142,
+    "starter_share": 0.02538737840950489,
+    "season": 0.025378460064530373,
+    "cba_bucket_is_10_plus": 0.021249832585453987,
+    "assists_pg": 0.017162906005978584,
+    "draft_number_clean": 0.017056996002793312,
+    "age": 0.015268261544406414,
+    "bbr_per": 0.011395483277738094,
+    "cba_bucket_is_7_9": 0.010912629775702953,
+    "reg_plus_minus_pg": 0.010391348041594028,
+    "height_inches": 0.010267858393490314,
+    "team_region_west": 0.010248626582324505,
+    "team_net_points_pg": 0.010130451992154121
+  }
+}
